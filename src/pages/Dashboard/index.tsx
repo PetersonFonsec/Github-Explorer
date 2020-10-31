@@ -1,9 +1,9 @@
 import React, { useState, FormEvent, useEffect } from 'react';
-import { FiChevronRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { Title, Form, Repositories, Error } from './styles';
 import logo from '../../assets/logo.svg';
 import api from '../../services/api';
+import BarInfo from '../../components/bar-info/index';
 
 interface Repository {
   full_name: string;
@@ -71,15 +71,12 @@ const Dashboard: React.FC = () => {
             key={repository.full_name}
             to={`/repositorios/${repository.full_name}`}
           >
-            <img
-              src={repository.owner.avatar_url}
+            <BarInfo
+              title={repository.full_name}
+              description={repository.description}
+              avatar={repository.owner.avatar_url}
               alt={repository.owner.login}
             />
-            <div>
-              <strong>{repository.full_name}</strong>
-              <p>{repository.description}</p>
-            </div>
-            <FiChevronRight size={20} />
           </Link>
         ))}
       </Repositories>

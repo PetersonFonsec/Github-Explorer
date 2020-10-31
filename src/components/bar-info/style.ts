@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
 export const Bar = styled.div`
-  a {
+  article {
     align-items: center;
     background: #fff;
     border-radius: 5px;
+    cursor: pointer;
     display: flex;
+    max-width: 700px;
     opacity: 0.8;
     padding: 24px;
     text-decoration: none;
@@ -16,6 +18,12 @@ export const Bar = styled.div`
       opacity: 1;
       transform: translateX(16px);
     }
+  }
+
+  img {
+    border-radius: 50%;
+    height: 64px;
+    width: 64px;
   }
 
   div {
