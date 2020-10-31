@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiChevronLeft } from 'react-icons/fi';
 import { Header, RepositoryInfo, Issues } from './styles';
 import Logo from '../../assets/logo.svg';
 import RepositoryService, {
   Issue,
   IRepository,
 } from '../../services/repository';
+import BarInfo from '../../components/bar-info/index';
 
 interface RepositoryParams {
   repository: string;
@@ -67,13 +68,12 @@ const Repository: React.FC = () => {
 
       <Issues>
         {issues.map(issue => (
-          <a key={issue.id} href={issue.html_url}>
-            <div>
-              <strong>{issue.title}</strong>
-              <p>{issue.user.login}</p>
-            </div>
-            <FiChevronRight size={20} />
-          </a>
+          <BarInfo
+            key={issue.id}
+            link={issue.html_url}
+            title={issue.title}
+            description={issue.user.login}
+          />
         ))}
       </Issues>
     </>
