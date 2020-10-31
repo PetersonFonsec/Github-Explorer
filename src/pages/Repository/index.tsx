@@ -1,31 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import Logo from '../../assets/logo.svg';
 import { Header, RepositoryInfo, Issues } from './styles';
-import api from '../../services/api';
+import Logo from '../../assets/logo.svg';
+import RepositoryService, {
+  Issue,
+  IRepository,
+} from '../../services/repository';
 
 interface RepositoryParams {
   repository: string;
-}
-interface IRepository {
-  full_name: string;
-  description: string;
-  stargazers_count: number;
-  forks_count: number;
-  open_issues_count: number;
-  owner: {
-    login: string;
-    avatar_url: string;
-  };
-}
-interface Issue {
-  title: string;
-  id: string;
-  html_url: string;
-  user: {
-    login: string;
-  };
 }
 
 const Repository: React.FC = () => {
@@ -34,11 +18,11 @@ const Repository: React.FC = () => {
   const [issues, setIssues] = useState<Issue[]>([]);
 
   useEffect(() => {
-    api.get(`repos/${params.repository}`).then(response => {
+    RepositoryService.getRepositoryData(params.repository).then(response => {
       setRepository(response.data);
     });
 
-    api.get(`repos/${params.repository}/issues`).then(response => {
+    RepositoryService.getIssue(params.repository).then(response => {
       setIssues(response.data);
     });
   }, [params.repository]);
