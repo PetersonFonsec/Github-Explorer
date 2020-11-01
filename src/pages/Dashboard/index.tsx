@@ -1,9 +1,10 @@
-import React, { useState, FormEvent, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Title, Form, Repositories, Error } from './styles';
+import { Title, Repositories } from './styles';
 import logo from '../../assets/logo.svg';
 import api from '../../services/api';
 import BarInfo from '../../components/bar-info/index';
+import Form from '../../components/form/index';
 
 interface Repository {
   full_name: string;
@@ -15,8 +16,6 @@ interface Repository {
 }
 
 const Dashboard: React.FC = () => {
-  const [newRepo, setNewRepo] = useState('');
-  const [inputError, setInputError] = useState('');
   const [repositories, setRepositories] = useState<Repository[]>(() => {
     const storagedRepositories = localStorage.getItem(
       '@GithubExplorer:repositories',
@@ -31,40 +30,18 @@ const Dashboard: React.FC = () => {
       JSON.stringify(repositories),
     );
   }, [repositories]);
-  async function handleAddRepository(
-    event: FormEvent<HTMLFormElement>,
-  ): Promise<void> {
-    event.preventDefault();
 
-    if (!newRepo) {
-      setInputError('Digite o autor/nome do repositório');
-      return;
-    }
-
-    try {
-      const response = await api.get<Repository>(`repos/${newRepo}`);
-      const repository = response.data;
-      setRepositories([...repositories, repository]);
-      setNewRepo('');
-      setInputError('');
-    } catch (error) {
-      setInputError('Erro na busca por esse repositório');
-    }
+  function handleAddRepository(newRepo: string): void {
+    api
+      .get<Repository>(`repos/${newRepo}`)
+      .then(({ data }) => setRepositories([...repositories, data]));
   }
 
   return (
     <>
       <img src={logo} alt="Github Explorer" />
       <Title>Explore repositórios no Github.</Title>
-      <Form hasError={!!inputError} onSubmit={e => handleAddRepository(e)}>
-        <input
-          value={newRepo}
-          onChange={e => setNewRepo(e.target.value)}
-          placeholder="Digite o nome do repositorio aqui"
-        />
-        <button type="submit">Pesquisar</button>
-      </Form>
-      {inputError && <Error>{inputError}</Error>}
+      <Form submit={(newRepo: string) => handleAddRepository(newRepo)} />
       <Repositories>
         {repositories.map(repository => (
           <Link
