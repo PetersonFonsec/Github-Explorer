@@ -25,12 +25,23 @@ export interface Issue {
 class RepositoryService {
   private api = api;
 
+  private localStorageKey = process.env.REACT_APP_LOCAL_STORAGE_KEY ?? '';
+
   getRepositoryData(repository: string): Promise<AxiosResponse<IRepository>> {
     return this.api.get<IRepository>(`repos/${repository}`);
   }
 
   getIssue(repository: string): Promise<AxiosResponse<Issue[]>> {
     return this.api.get<Issue[]>(`repos/${repository}/issues`);
+  }
+
+  getLocalRepository(): IRepository[] {
+    const storagedRepositories = localStorage.getItem(this.localStorageKey);
+    return storagedRepositories ? JSON.parse(storagedRepositories) : [];
+  }
+
+  setRepository(repositories: IRepository[]): void {
+    localStorage.setItem(this.localStorageKey, JSON.stringify(repositories));
   }
 }
 

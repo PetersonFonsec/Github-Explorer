@@ -7,19 +7,12 @@ import Form from '../../components/form/index';
 import RepositoryService, { IRepository } from '../../services/repository';
 
 const Dashboard: React.FC = () => {
-  const [repositories, setRepositories] = useState<IRepository[]>(() => {
-    const storagedRepositories = localStorage.getItem(
-      '@GithubExplorer:repositories',
-    );
-
-    return storagedRepositories ? JSON.parse(storagedRepositories) : [];
-  });
+  const [repositories, setRepositories] = useState<IRepository[]>(() =>
+    RepositoryService.getLocalRepository(),
+  );
 
   useEffect(() => {
-    localStorage.setItem(
-      '@GithubExplorer:repositories',
-      JSON.stringify(repositories),
-    );
+    RepositoryService.setRepository(repositories);
   }, [repositories]);
 
   function handleAddRepository(newRepo: string): void {
