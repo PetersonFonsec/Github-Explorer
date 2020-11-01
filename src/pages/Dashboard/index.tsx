@@ -2,21 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Title, Repositories } from './styles';
 import logo from '../../assets/logo.svg';
-import api from '../../services/api';
 import BarInfo from '../../components/bar-info/index';
 import Form from '../../components/form/index';
-
-interface Repository {
-  full_name: string;
-  description: string;
-  owner: {
-    login: string;
-    avatar_url: string;
-  };
-}
+import RepositoryService, { IRepository } from '../../services/repository';
 
 const Dashboard: React.FC = () => {
-  const [repositories, setRepositories] = useState<Repository[]>(() => {
+  const [repositories, setRepositories] = useState<IRepository[]>(() => {
     const storagedRepositories = localStorage.getItem(
       '@GithubExplorer:repositories',
     );
@@ -32,9 +23,9 @@ const Dashboard: React.FC = () => {
   }, [repositories]);
 
   function handleAddRepository(newRepo: string): void {
-    api
-      .get<Repository>(`repos/${newRepo}`)
-      .then(({ data }) => setRepositories([...repositories, data]));
+    RepositoryService.getRepositoryData(newRepo).then(({ data }) =>
+      setRepositories([...repositories, data]),
+    );
   }
 
   return (
