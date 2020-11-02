@@ -1,13 +1,16 @@
 <template>
-  <form @submit.prevent="submit">
-    <input
-      :class="{ error }"
-      type="text"
-      v-model="value"
-      placeholder="Digite o nome do repositorio aqui"
-    />
-    <button type="submit">Pesquisar</button>
-  </form>
+  <div>
+    <form @submit.prevent="submit">
+      <input
+        :class="{ error }"
+        type="text"
+        v-model="value"
+        placeholder="Digite o nome do repositorio aqui"
+      />
+      <button type="submit">Pesquisar</button>
+    </form>
+    <span class="error">{{ error }}</span>
+  </div>
 </template>
 
 <script>
@@ -16,7 +19,7 @@ export default {
   data() {
     return {
       value: "",
-      error: false,
+      error: "",
     };
   },
   methods: {
@@ -29,7 +32,7 @@ export default {
         this.$emit("submit", this.value);
         this.reset();
       } else {
-        this.error = true;
+        this.error = "Digite o autor/nome do repositório";
       }
     },
   },
@@ -55,14 +58,23 @@ input {
   font-size: 20px;
   line-height: 23px;
 
-  &.hasError {
+  &.error {
     border-color: #c53030;
     color: #c53030;
+    margin-top: 0;
   }
 
   &::placeholder {
     color: #a8a8b3;
   }
+}
+
+.error {
+  color: #c53030;
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 8px;
 }
 
 button {
