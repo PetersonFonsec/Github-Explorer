@@ -5,11 +5,27 @@
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+body {
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  background: #e5e5e5 url("./assets/github.svg") no-repeat 70% top;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+#app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+button {
+  cursor: pointer;
 }
 </style>
