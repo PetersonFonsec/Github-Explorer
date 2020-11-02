@@ -11,7 +11,7 @@ const routes = [
     component: Dashboard
   },
   {
-    path: '/repositorio',
+    path: '/repositorio/:owner/:repository',
     name: 'Repository',
     component: () => import(/* webpackChunkName: "repository" */ '../views/Repository.vue')
   }
