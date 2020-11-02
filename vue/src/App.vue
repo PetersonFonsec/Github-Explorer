@@ -38,4 +38,17 @@ ol {
   padding: 0;
   list-style: none;
 }
+
+.list {
+  margin-top: 80px;
+}
+
+.list li {
+  display: block;
+  text-decoration: none;
+}
+
+.list li + li {
+  margin-top: 16px;
+}
 </style>

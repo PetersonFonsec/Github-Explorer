@@ -1,7 +1,7 @@
 <template>
-  <ul class="list-repositories">
+  <ul class="list">
     <li v-for="repository in repositoriesInternal" :key="repository.full_name">
-      <router-link :to="`/repositorios/${repository.full_name}`">
+      <router-link :to="`/repositorio/${repository.full_name}`">
         <bar-info
           :title="repository.full_name"
           :description="repository.description"
@@ -21,6 +21,7 @@ export default {
     BarInfo,
   },
   props: {
+    link: Boolean,
     repositories: {
       type: Array,
       require: true,
@@ -41,18 +42,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.list-repositories {
-  margin-top: 80px;
-
-  li {
-    display: block;
-    text-decoration: none;
-  }
-
-  li + li {
-    margin-top: 16px;
-  }
-}
-</style>
