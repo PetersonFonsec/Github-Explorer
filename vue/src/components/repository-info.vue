@@ -1,7 +1,11 @@
 <template>
   <div class="repository-info">
     <header class="repository-info__header">
-      <img :src="repository.owner.avatar_url" :alt="repository.owner.login" />
+      <img
+        v-if="repository.owner"
+        :src="repository.owner.avatar_url"
+        :alt="repository.owner.login"
+      />
       <div class="repository-info__container">
         <strong>{{ repository.full_name }}</strong>
         <p>{{ repository.description }}</p>
