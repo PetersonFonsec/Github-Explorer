@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     reset() {
-      this.error = false;
+      this.error = "";
       this.value = "";
     },
     submit() {
