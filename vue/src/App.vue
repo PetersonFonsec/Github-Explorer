@@ -28,4 +28,14 @@ body {
 button {
   cursor: pointer;
 }
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
 </style>
