@@ -16,6 +16,14 @@ export interface IRepository {
   };
 }
 
+export interface Issue {
+  title: string;
+  id: string;
+  html_url: string;
+  user: {
+    login: string;
+  };
+}
 @Injectable({
   providedIn: 'root'
 })
