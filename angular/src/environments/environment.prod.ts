@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  urlApi: "https://api.github.com/",
+  storageKey: "@GithubExplorer:repositories"
 };
