@@ -10,6 +10,8 @@ import { FormRepositoryComponent } from './components/form-repository/form-repos
 import { ListRepositoriesComponent } from './components/list-repositories/list-repositories.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ListIssuesComponent } from './components/lists/list-issues/list-issues.component';
+import { RepositoryInfoComponent } from './components/repository-info/repository-info.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
     BarInfoComponent,
     FormRepositoryComponent,
     ListRepositoriesComponent,
-    DashboardComponent
+    DashboardComponent,
+    ListIssuesComponent,
+    RepositoryInfoComponent
   ],
   imports: [
     BrowserModule,

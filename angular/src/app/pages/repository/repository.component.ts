@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IRepository, Issue } from 'src/app/services/repository/repository.service';
 
 @Component({
   selector: 'app-repository',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./repository.component.scss']
 })
 export class RepositoryComponent implements OnInit {
-
+  repository: IRepository;
+  issues: Issue[];
   constructor() { }
 
   ngOnInit(): void {
