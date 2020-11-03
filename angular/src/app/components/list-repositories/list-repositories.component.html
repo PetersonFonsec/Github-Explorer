@@ -1,0 +1,13 @@
+<ul class="list">
+  <li *ngFor="let repository of repositories">
+    <a [routerLink]="['/repositorios', repository.owner.login, repository.name]" >
+      <app-bar-info
+        [title]="repository.full_name"
+        [description]="repository.description"
+        [avatar]="repository.owner.avatar_url"
+        [alt]="repository.owner.login"
+      >
+      </app-bar-info>
+    </a>
+  </li>
+</ul>
