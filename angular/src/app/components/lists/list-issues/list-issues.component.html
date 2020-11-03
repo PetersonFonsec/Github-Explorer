@@ -1,0 +1,8 @@
+
+  <ul class="list">
+    <li *ngFor="let issue of issues">
+      <a [href]="issue.html_url">
+        <app-bar-info [title]="issue.title" [description]="issue.user.login"></app-bar-info>
+      </a>
+    </li>
+  </ul>
