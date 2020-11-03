@@ -35,8 +35,8 @@ export class RepositoryService {
     return this.http.get<IRepository>(`${environment.urlApi}repos/${repository}`);
   }
 
-  getIssue(repository: string): Observable<IRepository> {
-    return this.http.get<IRepository>(`${environment.urlApi}repos/${repository}/issues`);
+  getIssue(repository: string): Observable<Issue[]> {
+    return this.http.get<Issue[]>(`${environment.urlApi}repos/${repository}/issues`);
   }
 
   getLocalRepository(): IRepository[] {

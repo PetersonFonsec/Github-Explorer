@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IRepository, Issue } from 'src/app/services/repository/repository.service';
+import { ActivatedRoute } from '@angular/router';
+import { IRepository, Issue, RepositoryService } from 'src/app/services/repository/repository.service';
 
 @Component({
   selector: 'app-repository',
@@ -9,9 +10,19 @@ import { IRepository, Issue } from 'src/app/services/repository/repository.servi
 export class RepositoryComponent implements OnInit {
   repository: IRepository;
   issues: Issue[];
-  constructor() { }
+  constructor(private repositoryService:RepositoryService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-  }
+    this.route.params.subscribe((params) => {
+      const repository = `${params.owner}/${params.repository}`
 
+      this.repositoryService.getRepositoryData(repository).subscribe(repositories => {
+        this.repository = repositories;
+      })
+
+      this.repositoryService.getIssue(repository).subscribe(issues => {
+        this.issues = issues;
+      })
+    });
+  }
 }
