@@ -1,26 +1,25 @@
 <div class="repository-info">
   <header class="repository-info__header">
     <img
-      v-if="repository.owner"
-      :src="repository.owner.avatar_url"
-      :alt="repository.owner.login"
+      [src]="repository?.owner.avatar_url"
+      [alt]="repository?.owner.login"
     />
     <div class="repository-info__container">
-      <strong>{{ repository.full_name }}</strong>
-      <p>{{ repository.description }}</p>
+      <strong>{{ repository?.full_name }}</strong>
+      <p>{{ repository?.description }}</p>
     </div>
   </header>
   <ul class="repository-info__list">
     <li>
-      <strong>{{ repository.stargazers_count }}</strong>
+      <strong>{{ repository?.stargazers_count }}</strong>
       <span>Stars</span>
     </li>
     <li>
-      <strong>{{ repository.forks_count }}</strong>
+      <strong>{{ repository?.forks_count }}</strong>
       <span>Forks</span>
     </li>
     <li>
-      <strong>{{ repository.open_issues_count }}</strong>
+      <strong>{{ repository?.open_issues_count }}</strong>
       <span>Issues abertas</span>
     </li>
   </ul>
