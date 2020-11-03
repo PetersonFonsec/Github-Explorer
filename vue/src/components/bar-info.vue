@@ -17,10 +17,6 @@
 export default {
   name: "BarInfo",
   props: {
-    msg: {
-      type: String,
-      require: true,
-    },
     title: {
       type: String,
       require: true,
