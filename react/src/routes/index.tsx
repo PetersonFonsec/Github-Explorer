@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Dashboard from '../pages/Dashboard/index';
-import Repository from '../pages/Repository/index';
 
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={Dashboard} />
-    <Route path="/repositorios/:repository+" component={Repository} />
+    <Suspense fallback={<h1>Rendering...</h1>}>
+      <Route
+        path="/repositorios/:repository+"
+        component={lazy(() => import('../pages/Repository/index'))}
+      />
+    </Suspense>
   </Switch>
 );
 
