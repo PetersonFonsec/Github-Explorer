@@ -1,13 +1,17 @@
 <template>
   <div class="Dashboard">
-    <img src="@/assets/logo.svg" alt="Github Explorer" />
+    <global-header />
     <h2 class="title">Explore repositórios no Github.</h2>
-    <form-repository @submit="getRepository" />
-    <list-repositories :repositories="repositories" />
+
+    <main>
+      <form-repository @submit="getRepository" />
+      <list-repositories :repositories="repositories" />
+    </main>
   </div>
 </template>
 
 <script>
+import GlobalHeader from "@/components/header.vue";
 import ListRepositories from "@/components/list-repositories.vue";
 import FormRepository from "@/components/form-repository.vue";
 import RepositoryService from "@/services/repository.js";
@@ -17,6 +21,7 @@ export default {
   components: {
     FormRepository,
     ListRepositories,
+    GlobalHeader,
   },
   data() {
     return {

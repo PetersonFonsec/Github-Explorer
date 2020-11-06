@@ -4,6 +4,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "Dashboard",
+};
+</script>
+
 <style>
 * {
   box-sizing: border-box;

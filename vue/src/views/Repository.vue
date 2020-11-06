@@ -1,18 +1,23 @@
 <template>
   <div class="about">
-    <repository-info :repository="repository" />
-    <list-issues :link="true" :issues="issue" />
+    <global-header :showButtonBack="true" />
+
+    <main>
+      <repository-info :repository="repository" />
+      <list-issues :link="true" :issues="issue" />
+    </main>
   </div>
 </template>
 
 <script>
+import GlobalHeader from "@/components/header.vue";
 import RepositoryInfo from "@/components/repository-info";
 import ListIssues from "@/components/list-issues.vue";
 import RepositoryService from "@/services/repository.js";
 
 export default {
   name: "Repository",
-  components: { RepositoryInfo, ListIssues },
+  components: { RepositoryInfo, ListIssues, GlobalHeader },
   data() {
     return {
       issue: [],
