@@ -1,0 +1,17 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+    align-items: center;
+    color: #a8a8b3;
+    display: flex;
+    text-decoration: none;
+    transition: color .2s ease-in-out;
+
+    img {
+      margin-right: 4px;
+    }
+  }
+}

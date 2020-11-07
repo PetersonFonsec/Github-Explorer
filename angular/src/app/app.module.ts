@@ -24,7 +24,7 @@ import { BarInfoModule } from './components/bar-info/bar-info.module';
     FormsModule,
     HttpClientModule,
     HeaderModule,
-    BarInfoModule
+    BarInfoModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
