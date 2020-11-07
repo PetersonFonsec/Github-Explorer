@@ -4,31 +4,27 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RepositoryComponent } from './pages/repository/repository.component';
-import { BarInfoComponent } from './components/bar-info/bar-info.component';
 import { FormRepositoryComponent } from './components/form-repository/form-repository.component';
 import { ListRepositoriesComponent } from './components/list-repositories/list-repositories.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ListIssuesComponent } from './components/lists/list-issues/list-issues.component';
-import { RepositoryInfoComponent } from './components/repository-info/repository-info.component';
+import { HeaderModule } from './components/header/header.module';
+import { BarInfoModule } from './components/bar-info/bar-info.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RepositoryComponent,
-    BarInfoComponent,
     FormRepositoryComponent,
     ListRepositoriesComponent,
     DashboardComponent,
-    ListIssuesComponent,
-    RepositoryInfoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    HeaderModule,
+    BarInfoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
