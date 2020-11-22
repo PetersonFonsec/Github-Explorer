@@ -9,9 +9,16 @@ module.exports = {
     manifestOptions: {
       name: 'Github Explorer',
       short_name: 'GitEx',
-      start_url: '.',
+      start_url: 'http://github-explorer-vue.surge.sh/',
       display: 'standalone',
       theme_color: '#e5e5e5'
+    },
+    iconPaths: {
+      favicon32: 'favicon/favicon-32x32.png',
+      favicon16: 'favicon/favicon-16x16.png',
+      appleTouchIcon: 'favicon/apple-touch-icon.png',
+      maskIcon: 'favicon/safari-pinned-tab.svg',
+      msTileImage: 'favicon/android-chrome-512x512.png'
     }
   }
 }
