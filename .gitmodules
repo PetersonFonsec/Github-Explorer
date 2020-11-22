@@ -1,0 +1,9 @@
+[submodule "Github-Explorer-vue"]
+	path = Github-Explorer-vue
+	url = git@github.com:PetersonFonsec/Github-Explorer-vue.git
+[submodule "Github-explorer-react"]
+	path = Github-explorer-react
+	url = git@github.com:PetersonFonsec/Github-explorer-react.git
+[submodule "Github-Explorer-Angular"]
+	path = Github-Explorer-Angular
+	url = git@github.com:PetersonFonsec/Github-Explorer-Angular.git
